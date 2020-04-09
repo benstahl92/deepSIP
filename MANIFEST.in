@@ -1,0 +1,3 @@
+include deepSNIaID/trained_models/*.pth
+include deepSNIaID/trained_models/*.npy
+include deepSNIaID/trained_models/*.json
