@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>deepSNIaID.dataset &#8212; deepSNIaID 0.1.dev0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="deepSNIaID.architecture" href="deepSNIaID.architecture.html" />
+    <link rel="prev" title="deepSNIaID.preprocessing" href="deepSNIaID.preprocessing.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-deepSNIaID.dataset">
+<span id="deepsniaid-dataset"></span><h1>deepSNIaID.dataset<a class="headerlink" href="#module-deepSNIaID.dataset" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="deepSNIaID.dataset.NumpyXDataset">
+<em class="property">class </em><code class="sig-prename descclassname">deepSNIaID.dataset.</code><code class="sig-name descname">NumpyXDataset</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.dataset.NumpyXDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.dataset.Dataset</span></code></p>
+<p>create torch tensor dataset from X numpy ndarray</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">np.ndarray of shape (number of spectra, number of wavelength bins)</span></dt><dd><p>pre-processed spectra</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">torch.tensor of shape (number of spectra, 1, number of wavelength bins)</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="deepSNIaID.dataset.NumpyXYDataset">
+<em class="property">class </em><code class="sig-prename descclassname">deepSNIaID.dataset.</code><code class="sig-name descname">NumpyXYDataset</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.dataset.NumpyXYDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#deepSNIaID.dataset.NumpyXDataset" title="deepSNIaID.dataset.NumpyXDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">deepSNIaID.dataset.NumpyXDataset</span></code></a></p>
+<p>create torch tensor dataset from X, Y numpy ndarrays</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">np.ndarray of shape (number of spectra, number of wavelength bins)</span></dt><dd><p>pre-processed spectra</p>
+</dd>
+<dt><strong>Y</strong><span class="classifier">np.ndarray of shape (number of spectra, number of targets)</span></dt><dd><p>targets</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">torch.tensor of shape (number of spectra, 1, number of wavelength bins)</span></dt><dd></dd>
+<dt><strong>Y</strong><span class="classifier">torch.tensor of shape (number of spectra, number of targets)</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">deepSNIaID</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.model.html">deepSNIaID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.preprocessing.html">deepSNIaID.preprocessing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">deepSNIaID.dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.architecture.html">deepSNIaID.architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.training.html">deepSNIaID.training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.utils.html">deepSNIaID.utils</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="deepSNIaID.preprocessing.html" title="previous chapter">deepSNIaID.preprocessing</a></li>
+      <li>Next: <a href="deepSNIaID.architecture.html" title="next chapter">deepSNIaID.architecture</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Benjamin Stahl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/deepSNIaID.dataset.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>deepSNIaID.preprocessing &#8212; deepSNIaID 0.1.dev0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="deepSNIaID.dataset" href="deepSNIaID.dataset.html" />
+    <link rel="prev" title="deepSNIaID" href="deepSNIaID.model.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-deepSNIaID.preprocessing">
+<span id="deepsniaid-preprocessing"></span><h1>deepSNIaID.preprocessing<a class="headerlink" href="#module-deepSNIaID.preprocessing" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="deepSNIaID.preprocessing.Spectrum">
+<em class="property">class </em><code class="sig-prename descclassname">deepSNIaID.preprocessing.</code><code class="sig-name descname">Spectrum</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">z</em>, <em class="sig-param">obsframe=True</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.Spectrum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>container for individual spectra</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filename</strong><span class="classifier">str</span></dt><dd><p>name of text file to read spectrum from</p>
+</dd>
+<dt><strong>z</strong><span class="classifier">float</span></dt><dd><p>redshift of SN</p>
+</dd>
+<dt><strong>obsframe</strong><span class="classifier">bool, optional</span></dt><dd><p>indicates spectrum is in observer frame (and thus needs to be
+de-redshifted)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>signal_window_angstroms</strong><span class="classifier">int</span></dt><dd><p>window size in angstroms for signal smoothing</p>
+</dd>
+<dt><strong>signal_smoothing_order</strong><span class="classifier">int</span></dt><dd><p>polynomial order for signal smoothing</p>
+</dd>
+<dt><strong>continuum_window_angstroms</strong><span class="classifier">int</span></dt><dd><p>window size in angstroms for continuum
+smoothing</p>
+</dd>
+<dt><strong>continuum_smoothing_order</strong><span class="classifier">int</span></dt><dd><p>polynomial order for continuum smoothing</p>
+</dd>
+<dt><strong>lwave_bounds</strong><span class="classifier">tuple, list, or other iterable of length 2</span></dt><dd><p>lower and upper limit of logarithmic wavelength array</p>
+</dd>
+<dt><strong>lwave_n_bins</strong><span class="classifier">int</span></dt><dd><p>number of bins in logarithmic wavelength grid</p>
+</dd>
+<dt><strong>lwave</strong><span class="classifier">np.array</span></dt><dd><p>logarithmic wavelength grid</p>
+</dd>
+<dt><strong>apodize_end_pct</strong><span class="classifier">float</span></dt><dd><p>percentage from each end of flux array to apodize</p>
+</dd>
+<dt><strong>aug_drop_frac</strong><span class="classifier">float</span></dt><dd><p>maximum percentage of each of flux array to drop during
+augmentation</p>
+</dd>
+<dt><strong>wave</strong><span class="classifier">np.array</span></dt><dd><p>rest frame wavelength grid</p>
+</dd>
+<dt><strong>flux</strong><span class="classifier">np.array</span></dt><dd><p>fluxes on wavelength grid</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.Spectrum.SNID" title="deepSNIaID.preprocessing.Spectrum.SNID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SNID</span></code></a>(self, \*\*kwargs)</p></td>
+<td><p>run SNID on spectrum using pySNID (if available)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.Spectrum.augprocess" title="deepSNIaID.preprocessing.Spectrum.augprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">augprocess</span></code></a>(self, augz, sig_wA)</p></td>
+<td><p>process spectrum with augmentation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.Spectrum.plot" title="deepSNIaID.preprocessing.Spectrum.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>(self[, show])</p></td>
+<td><p>plot original or processed spectrum for quick inspection</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.Spectrum.process" title="deepSNIaID.preprocessing.Spectrum.process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process</span></code></a>(self)</p></td>
+<td><p>process spectrum with no augmentation</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.Spectrum.process">
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.Spectrum.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>process spectrum with no augmentation</p>
+<p>complete pre-processing: smoothes spectrum, identifies and subtracts
+pseudo-continuum, does log binning, scales flux and apodizes edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>np.array</dt><dd><p>fully pre-processed flux array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.Spectrum.augprocess">
+<code class="sig-name descname">augprocess</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">augz</em>, <em class="sig-param">sig_wA</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.Spectrum.augprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>process spectrum with augmentation</p>
+<p>perturbs wavelength by multiplicative (1 + augz),
+drops ends randomly up to a maximum of aug_drop_frac,
+modify signal_window_angstroms to sig_wA,
+and then perform pre-processing according to process method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>np.array</dt><dd><p>augmented and fully pre-processed flux array</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.Spectrum.plot">
+<code class="sig-name descname">plot</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">show='processed'</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.Spectrum.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot original or processed spectrum for quick inspection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>show</strong><span class="classifier">str, optional</span></dt><dd><p>type of plot to show (‘processed’ or ‘original’)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.Spectrum.SNID">
+<code class="sig-name descname">SNID</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.Spectrum.SNID" title="Permalink to this definition">¶</a></dt>
+<dd><p>run SNID on spectrum using pySNID (if available)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>**kwargs</strong></dt><dd><p>arbitrary keyword arguments for pySNID</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>pySNID outputs</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="deepSNIaID.preprocessing.EvaluationSpectra">
+<em class="property">class </em><code class="sig-prename descclassname">deepSNIaID.preprocessing.</code><code class="sig-name descname">EvaluationSpectra</code><span class="sig-paren">(</span><em class="sig-param">spectra</em>, <em class="sig-param">savefile='eval.spectra.sav'</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.EvaluationSpectra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>class for preparing spectra for evaluation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spectra</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>spectra to prepare for evaluation; must have columns columns of
+[SN, filename, z] and optionally obsframe as bool</p>
+</dd>
+<dt><strong>savefile</strong><span class="classifier">str, optional</span></dt><dd><p>name of save file</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">np.ndarray with dimensions (number of spectra, lwave_n_bins)</span></dt><dd><p>processed spectra (attribute set by process method)</p>
+</dd>
+<dt><strong>SNID_results</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>pySNID results for each spectrum
+(attribute set by SNID method)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.EvaluationSpectra.SNID" title="deepSNIaID.preprocessing.EvaluationSpectra.SNID"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SNID</span></code></a>(self[, selection, status])</p></td>
+<td><p>run SNID on selected (via boolean array) spectra in dataset</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.EvaluationSpectra.SNID_to_csv" title="deepSNIaID.preprocessing.EvaluationSpectra.SNID_to_csv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SNID_to_csv</span></code></a>(self)</p></td>
+<td><p>write SNID results to csv file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.EvaluationSpectra.load" title="deepSNIaID.preprocessing.EvaluationSpectra.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(self)</p></td>
+<td><p>load from savefile</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.EvaluationSpectra.process" title="deepSNIaID.preprocessing.EvaluationSpectra.process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process</span></code></a>(self[, status])</p></td>
+<td><p>process all loaded spectra with no augmentation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.EvaluationSpectra.save" title="deepSNIaID.preprocessing.EvaluationSpectra.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(self)</p></td>
+<td><p>save current state to savefile</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.EvaluationSpectra.to_npy" title="deepSNIaID.preprocessing.EvaluationSpectra.to_npy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_npy</span></code></a>(self)</p></td>
+<td><p>write processed spectra to .npy file</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.EvaluationSpectra.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.EvaluationSpectra.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>save current state to savefile</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.EvaluationSpectra.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.EvaluationSpectra.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>load from savefile</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.EvaluationSpectra.process">
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">status=True</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.EvaluationSpectra.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>process all loaded spectra with no augmentation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>status</strong><span class="classifier">bool, optional</span></dt><dd><p>show status bars</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.EvaluationSpectra.SNID">
+<code class="sig-name descname">SNID</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">selection='all'</em>, <em class="sig-param">status=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.EvaluationSpectra.SNID" title="Permalink to this definition">¶</a></dt>
+<dd><p>run SNID on selected (via boolean array) spectra in dataset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>selection</strong><span class="classifier">boolean array</span></dt><dd><p>spectra from data set to run SNID on via pySNID</p>
+</dd>
+<dt><strong>status</strong><span class="classifier">bool, optional</span></dt><dd><p>show status bars</p>
+</dd>
+<dt><strong>**kwargs</strong></dt><dd><p>arbitrary keyword arguments for pySNID</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.EvaluationSpectra.SNID_to_csv">
+<code class="sig-name descname">SNID_to_csv</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.EvaluationSpectra.SNID_to_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>write SNID results to csv file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.EvaluationSpectra.to_npy">
+<code class="sig-name descname">to_npy</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.EvaluationSpectra.to_npy" title="Permalink to this definition">¶</a></dt>
+<dd><p>write processed spectra to .npy file</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="deepSNIaID.preprocessing.TVTSpectra">
+<em class="property">class </em><code class="sig-prename descclassname">deepSNIaID.preprocessing.</code><code class="sig-name descname">TVTSpectra</code><span class="sig-paren">(</span><em class="sig-param">spectra</em>, <em class="sig-param">savefile='tvt.spectra.sav'</em>, <em class="sig-param">prep=1</em>, <em class="sig-param">val_frac=0.1</em>, <em class="sig-param">test_frac=0.1</em>, <em class="sig-param">phase_bounds=(-10</em>, <em class="sig-param">18)</em>, <em class="sig-param">dm15_bounds=(0.85</em>, <em class="sig-param">1.55)</em>, <em class="sig-param">phase_binsize=4</em>, <em class="sig-param">dm15_binsize=0.1</em>, <em class="sig-param">aug_num=5000</em>, <em class="sig-param">aug_z_bounds=(-0.004</em>, <em class="sig-param">0.004)</em>, <em class="sig-param">aug_signal_window_angstroms=(50</em>, <em class="sig-param">150)</em>, <em class="sig-param">random_state=100</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.TVTSpectra" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#deepSNIaID.preprocessing.EvaluationSpectra" title="deepSNIaID.preprocessing.EvaluationSpectra"><code class="xref py py-class docutils literal notranslate"><span class="pre">deepSNIaID.preprocessing.EvaluationSpectra</span></code></a></p>
+<p>class for preparing Training, Validation, and Testing sets</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spectra</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>spectra to prepare; must have columns columns of
+[SN, filename, z] and optionally obsframe as bool</p>
+</dd>
+<dt><strong>savefile</strong><span class="classifier">str, optional</span></dt><dd><p>name of save file</p>
+</dd>
+<dt><strong>prep</strong><span class="classifier">int, optional</span></dt><dd><p>preparation mode (1 for all spectra, 2 for domain-restricted subset)</p>
+</dd>
+<dt><strong>val_frac</strong><span class="classifier">float, optional</span></dt><dd><p>fraction of full set to split for validation</p>
+</dd>
+<dt><strong>test_frac</strong><span class="classifier">float, optional</span></dt><dd><p>fraction of full set to split for testing</p>
+</dd>
+<dt><strong>phase_bounds</strong><span class="classifier">tuple, list, or other iterable of length 2, optional</span></dt><dd><p>lower and upper phase limits of domain</p>
+</dd>
+<dt><strong>dm15_bounds</strong><span class="classifier">tuple, list, or other iterable of length 2, optional</span></dt><dd><p>lower and upper dm15 limits of domain</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Other Parameters</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>phase_binsize</strong><span class="classifier">int or float, optional</span></dt><dd><p>phase bin size for pseudo-stratified splitting</p>
+</dd>
+<dt><strong>dm15_binsize</strong><span class="classifier">int or float, optional</span></dt><dd><p>dm15 bin size for pseudo-stratified splitting</p>
+</dd>
+<dt><strong>aug_num</strong><span class="classifier">int, optional</span></dt><dd><p>final size of training set after augmentation</p>
+</dd>
+<dt><strong>aug_z_bounds</strong><span class="classifier">tuple, list, or other iterable of length 2, optional</span></dt><dd><p>lower and upper limits of randomly selected redshifts for
+augmented spectra</p>
+</dd>
+<dt><strong>aug_signal_window_angstroms</strong><span class="classifier">tuple, list, or other iterable of length 2</span></dt><dd><p>lower and upper limits of randomly selected
+signal windows for augmented spectra</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, optional</span></dt><dd><p>seed for random number generator</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spectra_[out,in]</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>subset of spectra that are [out,in] selected domain</p>
+</dd>
+<dt><strong>spectra_aug</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>augmented spectra</p>
+</dd>
+<dt><strong>Ycol</strong><span class="classifier">list</span></dt><dd><p>columns in spectra that correspond to labels</p>
+</dd>
+<dt><strong>[train,aug,val,test]X</strong><span class="classifier">np.ndarray</span></dt><dd><p>processed spectra (attribute set by [aug]process
+method)</p>
+</dd>
+<dt><strong>[train,aug,val,test]Y</strong><span class="classifier">np.ndarray</span></dt><dd><p>targets (attribute set by [aug]process method)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SNID</span></code>(self[, selection, status])</p></td>
+<td><p>run SNID on selected (via boolean array) spectra in dataset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SNID_to_csv</span></code>(self)</p></td>
+<td><p>write SNID results to csv file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.TVTSpectra.augprocess" title="deepSNIaID.preprocessing.TVTSpectra.augprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">augprocess</span></code></a>(self[, status])</p></td>
+<td><p>process all loaded spectra with augmentation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code>(self)</p></td>
+<td><p>load from savefile</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.TVTSpectra.process" title="deepSNIaID.preprocessing.TVTSpectra.process"><code class="xref py py-obj docutils literal notranslate"><span class="pre">process</span></code></a>(self[, status])</p></td>
+<td><p>process all loaded spectra with no augmentation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code>(self)</p></td>
+<td><p>save current state to savefile</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.TVTSpectra.split" title="deepSNIaID.preprocessing.TVTSpectra.split"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split</span></code></a>(self[, force, method])</p></td>
+<td><p>split spectra into train/val/test subsets</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#deepSNIaID.preprocessing.TVTSpectra.to_npy" title="deepSNIaID.preprocessing.TVTSpectra.to_npy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_npy</span></code></a>(self)</p></td>
+<td><p>write processed spectra and targets to .npy files</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.TVTSpectra.split">
+<code class="sig-name descname">split</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">force=False</em>, <em class="sig-param">method='stratified'</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.TVTSpectra.split" title="Permalink to this definition">¶</a></dt>
+<dd><p>split spectra into train/val/test subsets</p>
+<dl class="simple">
+<dt>two splitting methods are available:</dt><dd><ol class="arabic simple">
+<li><dl class="simple">
+<dt>‘stratified’ - split in-domain spectra in pseudo-stratified</dt><dd><p>fashion by randomly selected subsets from bins</p>
+</dd>
+</dl>
+</li>
+<li><p>‘randomized’ - random selection</p></li>
+</ol>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>force</strong><span class="classifier">bool, optional</span></dt><dd><p>overwrite pre-existing splits if True</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">str, optional</span></dt><dd><p>splitting method (‘stratified’ or ‘randomized’)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.TVTSpectra.process">
+<code class="sig-name descname">process</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">status=True</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.TVTSpectra.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>process all loaded spectra with no augmentation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>status</strong><span class="classifier">bool, optional</span></dt><dd><p>show status bars</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.TVTSpectra.augprocess">
+<code class="sig-name descname">augprocess</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">status=True</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.TVTSpectra.augprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>process all loaded spectra with augmentation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>status</strong><span class="classifier">bool, optional</span></dt><dd><p>show status bars</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="deepSNIaID.preprocessing.TVTSpectra.to_npy">
+<code class="sig-name descname">to_npy</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.preprocessing.TVTSpectra.to_npy" title="Permalink to this definition">¶</a></dt>
+<dd><p>write processed spectra and targets to .npy files</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">deepSNIaID</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.model.html">deepSNIaID</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">deepSNIaID.preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.dataset.html">deepSNIaID.dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.architecture.html">deepSNIaID.architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.training.html">deepSNIaID.training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.utils.html">deepSNIaID.utils</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="deepSNIaID.model.html" title="previous chapter">deepSNIaID</a></li>
+      <li>Next: <a href="deepSNIaID.dataset.html" title="next chapter">deepSNIaID.dataset</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Benjamin Stahl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/deepSNIaID.preprocessing.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

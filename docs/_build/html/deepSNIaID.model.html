@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>deepSNIaID &#8212; deepSNIaID 0.1.dev0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="deepSNIaID.preprocessing" href="deepSNIaID.preprocessing.html" />
+    <link rel="prev" title="deepSNIaID" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-deepSNIaID.model">
+<span id="deepsniaid"></span><h1>deepSNIaID<a class="headerlink" href="#module-deepSNIaID.model" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="deepSNIaID.model.deepSNIaID">
+<em class="property">class </em><code class="sig-prename descclassname">deepSNIaID.model.</code><code class="sig-name descname">deepSNIaID</code><span class="sig-paren">(</span><em class="sig-param">spec_len=1024</em>, <em class="sig-param">seed=100</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.model.deepSNIaID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>class for deploying trained deepSNIaID models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spec_len</strong><span class="classifier">int, optional</span></dt><dd><p>number of wavelength bins for pre-processed spectra
+(must match what was used in training models)</p>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int, optional</span></dt><dd><p>seed for random number generator</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>models</strong><span class="classifier">pd.DataFrame</span></dt><dd><p>models, along with metadata and utilities, indexed by purpose</p>
+</dd>
+<dt><strong>device</strong><span class="classifier">torch.device</span></dt><dd><p>device type being used (GPU if available, else CPU)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#deepSNIaID.model.deepSNIaID.predict" title="deepSNIaID.model.deepSNIaID.predict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">predict</span></code></a>(self, spectra[, threshold, mcnum, …])</p></td>
+<td><p>make predictions with trained models</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="deepSNIaID.model.deepSNIaID.predict">
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">spectra</em>, <em class="sig-param">threshold=0.5</em>, <em class="sig-param">mcnum=100</em>, <em class="sig-param">status=False</em><span class="sig-paren">)</span><a class="headerlink" href="#deepSNIaID.model.deepSNIaID.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>make predictions with trained models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>spectra</strong><span class="classifier">np.ndarray or pd.DataFrame</span></dt><dd><p>pre-preocessed spectra if np.ndarray else pd.DataFrame with
+columns of [SN, filename, z] and optionally obsframe as bool</p>
+</dd>
+<dt><strong>threshold</strong><span class="classifier">float, optional</span></dt><dd><p>minimum threshold for ‘in’ classification by Domain model</p>
+</dd>
+<dt><strong>mcnum</strong><span class="classifier">int, optional</span></dt><dd><p>number of stochastic forward passes to perform</p>
+</dd>
+<dt><strong>status</strong><span class="classifier">bool, optional</span></dt><dd><p>show status bars</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>pd.DataFrame</dt><dd><p>predictions generated by each model</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">deepSNIaID</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">deepSNIaID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.preprocessing.html">deepSNIaID.preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.dataset.html">deepSNIaID.dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.architecture.html">deepSNIaID.architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.training.html">deepSNIaID.training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.utils.html">deepSNIaID.utils</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">deepSNIaID</a></li>
+      <li>Next: <a href="deepSNIaID.preprocessing.html" title="next chapter">deepSNIaID.preprocessing</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Benjamin Stahl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/deepSNIaID.model.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

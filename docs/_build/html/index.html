@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>deepSNIaID &#8212; deepSNIaID 0.1.dev0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="deepSNIaID" href="deepSNIaID.model.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="deepsniaid">
+<h1>deepSNIaID<a class="headerlink" href="#deepsniaid" title="Permalink to this headline">¶</a></h1>
+<p>deepSNIaID (deep learning for Supernova Ia IDentification) is an open-source toolkit for measuring the phase and light-curve shape (parameterized by SNooPy’s <span class="math notranslate nohighlight">\(\Delta m_{15}\)</span>) of a Type Ia Supernova (SN Ia) from an optical spectrum. The primary contents of the package are a set of three trained Convolutional Neural Networks (CNNs) for the aforementioned purposes, but tools for preprocessing spectra, modifying the neural architecture, training models, and sweeping through hyperparameters are also included.</p>
+<p>The entire code base is available on GitHub: <a class="reference external" href="https://github.com/benstahl92/deepSNIaID">https://github.com/benstahl92/deepSNIaID</a></p>
+<p>If you use deepSNIaID in your research, please cite the following paper:</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>First, you’ll need to clone deepSNIaID and enter its directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/benstahl92/deepSNIaID.git
+<span class="nb">cd</span> deepSNIaID
+</pre></div>
+</div>
+<p>(optional) It is recommended that you use a virtual environment for deepSNIaID and its dependencies.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m venv dsnenv <span class="c1"># create virtual environment (one time only)</span>
+<span class="nb">source</span> dsnenv/bin/active <span class="c1"># each time you need to activate the environment</span>
+deactivate <span class="c1"># if/when you need to leave the environment</span>
+</pre></div>
+</div>
+<p>Install dependencies and deepSNIaID</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
+pip install .
+</pre></div>
+</div>
+</div>
+<div class="section" id="standard-usage">
+<h2>Standard Usage<a class="headerlink" href="#standard-usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">deepSNIaID</span> <span class="kn">import</span> <span class="n">deepSNIaID</span>
+<span class="n">dsn</span> <span class="o">=</span> <span class="n">deepSNIaID</span><span class="p">()</span>
+<span class="c1"># spectra is a pd.DataFrame with columns including [&#39;SN&#39;, &#39;filename&#39;, &#39;z&#39;]</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">dsn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">spectra</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">status</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Placeholder for example section on GitHub</p>
+</div>
+<div class="section" id="full-documentation">
+<h2>Full Documentation<a class="headerlink" href="#full-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Beyond standard usage, there may be occasions to use the underlying toolkit provided by deepSNIaID. We therefore provide full documentation of its capabilities below.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.model.html">deepSNIaID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.preprocessing.html">deepSNIaID.preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.dataset.html">deepSNIaID.dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.architecture.html">deepSNIaID.architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.training.html">deepSNIaID.training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.utils.html">deepSNIaID.utils</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<p>We welcome community involvement in the form of bug fixes, architecture improvements and new trained models, additional high-quality data (spectra and photometry), and expanded functionality. To those wishing to participate, we ask that you fork the <a class="reference external" href="https://github.com/benstahl92/deepSNIaID">deepSNIaID repository</a> and issue a pull request with your changes (along with unit tests and a description of your contribution).</p>
+<p>deepSNIaID is developed and maintained by Benjamin Stahl under the supervision of Prof. Alex Filippenko at UC Berkeley.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">deepSNIaID</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.model.html">deepSNIaID</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.preprocessing.html">deepSNIaID.preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.dataset.html">deepSNIaID.dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.architecture.html">deepSNIaID.architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.training.html">deepSNIaID.training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepSNIaID.utils.html">deepSNIaID.utils</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="deepSNIaID.model.html" title="next chapter">deepSNIaID</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Benjamin Stahl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
