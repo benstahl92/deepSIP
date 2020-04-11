@@ -1,12 +1,14 @@
 codecov==2.0.22
 matplotlib==2.1.2
 numpy==1.18.1
+numpydoc>=0.8.0
 pandas==0.24.2
 pytest==5.0.1
 pytest-cov==2.5.1
 PyYAML==5.3
 scikit-learn==0.22.1
 scipy==1.4.1
+sphinx-rtd-theme>=0.4.1
 torch==1.0.0
 torchsummary==1.5.1
 tqdm==4.40.0
