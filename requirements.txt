@@ -1,6 +1,7 @@
 codecov==2.0.22
 matplotlib==2.1.2
 numpy==1.18.1
+numpydoc>=0.8.0
 pandas==0.24.2
 pytest==5.0.1
 pytest-cov==2.5.1
