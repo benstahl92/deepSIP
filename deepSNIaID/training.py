@@ -338,8 +338,7 @@ class Sweep:
                  testX = None, testY = None):
 
         if not _WANDB:
-            print('cannot do sweeps without wandb installed')
-            return
+            raise ImportError('cannot do sweeps without wandb installed')
 
         # validate inputs
         if 'WANDB_API_KEY' not in os.environ:

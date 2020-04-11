@@ -4,10 +4,7 @@ python:
   - 3.6
 
 install:
-  - pip install --upgrade pytest # https://github.com/jupyter/repo2docker/issues/548
-  - pip install pytest-cov
-  - pip install codecov
-  - pip install matplotlib
+  - pip install -r requirements.py
   - pip install .
 
 script:
