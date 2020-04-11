@@ -32,7 +32,7 @@ def test_predict():
     dsn = deepSNIaID()
     with pytest.raises(TypeError):
         results = dsn.predict(5)
-    results = dsn.predict(DF, mcnum = 5, status = True)
+    results = dsn.predict(DF, mcnum = 2, status = True)
     assert type(results) == pd.DataFrame
     assert results['Domain'].max() <= 1.
     assert results['Domain'].min() >= 0.
