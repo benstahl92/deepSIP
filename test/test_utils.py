@@ -9,7 +9,7 @@ import pytest
 # imports -- custom
 from deepSNIaID import utils
 from deepSNIaID.utils import _log_bin_loop, _log_bin_vec
-from deepSNIaID.architecture import _fc_block
+from deepSNIaID.architecture import _fc_block, DropoutCNN
 
 # globals for testing
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -168,8 +168,9 @@ def test_init_weights():
     assert (block1.linear.bias.data == 0.1).all()
 
 def test_stochastic_predict():
-    X = torch.ones((20, 10))
-    block = _fc_block(10, 1, activate = False, dropout = 0.)
+    X = torch.ones((20, 1, 40))
+    #block = _fc_block(10, 1, activate = False, dropout = 0.)
+    block = DropoutCNN(40, kernel = 1, filters = 2, fc_size = 4, drop_rate = 0.)
     mu, std = utils.stochastic_predict(block, X, seed = 100, mcnum = 5)
     assert len(mu) == 20
     assert (std == 0).all()

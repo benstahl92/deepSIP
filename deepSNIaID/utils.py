@@ -506,29 +506,34 @@ def stochastic_predict(network, X, mcnum = 100, sigmoid = False, seed = None,
            mean prediction per input
     std : np.ndarray
           std of predictions per input
+
+    Notes
+    -----
+    Does mcnum forward passes on each row of input, one at a time, with
+    re-seeding between each row. This ensures that predictions on a given input
+    will be the same regardless of the order of inputs. It is possible the
+    algorithm could be optimized for speed, but in tests it performs comparably
+    to the previous implementation that suffered from modest reproducibility
+    issues.
     '''
-    if type(seed) is int:
-        reset_state(seed = seed)
     if scaler is None:
         scaler = VoidScaler()
+    network.train() # keep dropout so network is probabilistic
     with torch.no_grad():
-        network.train() # keep dropout so network is probabilistic
-        # do first prediction manually to get number of outputs
-        pred = network(X)
-        if sigmoid:
-            pred = torch.sigmoid(pred)
-        predictions = np.zeros((mcnum, len(X), pred.size()[-1]))
-        predictions[0] = scaler.inverse_transform(torch2numpy(pred))
-        loop = range(1, mcnum)
         if status:
-            loop = tqdm(loop)
-        for i in loop:
+            X = tqdm(X)
+        # do predictions one at a time make reproducible regardless of order
+        predictions = np.zeros((mcnum, len(X), 1))
+        for i, XX in enumerate(X):
+            if type(seed) is int:
+                reset_state(seed = seed)
+            # reshape for network input and repeat in mcnum times
+            XX = XX.reshape(1, 1, XX.size()[-1]).repeat(mcnum, 1, 1)
+            pred = network(XX)
             if sigmoid:
-                pred = torch.sigmoid(network(X))
-            else:
-                pred = network(X)
-            predictions[i] = scaler.inverse_transform(torch2numpy(pred))
-        return predictions.mean(axis = 0), predictions.std(axis = 0)
+                pred = torch.sigmoid(pred)
+            predictions[:,i,:] = scaler.inverse_transform(torch2numpy(pred))
+    return predictions.mean(axis = 0), predictions.std(axis = 0)
 
 class WrappedModel(nn.Module):
     '''

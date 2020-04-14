@@ -19,7 +19,8 @@ def test_NumpyXDataset():
 def test_NumpyXYDataset():
     X = np.ones((10, 5)).astype(np.float32)
     Y = 5 * np.random.rand(10, 1).astype(np.float32) + 10
-    ds = NumpyXYDataset(X, Y)
+    ds = NumpyXYDataset(X, Y, device = 'cpu')
+    assert ds.device == 'cpu'
     assert ds.X.shape == (10, 1, 5)
     assert len(ds.X) == len(ds.Y)
     assert (ds.Y.numpy() == Y).all()
