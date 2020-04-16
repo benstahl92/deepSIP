@@ -11,11 +11,9 @@ __all__ = ['models', 'model_path']
 model_path = os.path.join(os.path.dirname(__file__))
 
 columns = ['kernel', 'filters', 'fc_size', 'drop_rate', 'Ymin', 'Ymax']
-network_params = [[13, 32, 64, 0.1, 0., 1.],
-                  [13, 16, 32, 0.01, -10, 18],
-                  [25, 16, 16, 0.01, 0.85, 1.55]]
+
+network_params = [[25, 8, 16, 0.01, 0., 1.],
+                  [25, 8, 16, 0.01, -10, 18],
+                  [35, 8, 128, 0.01, 0.85, 1.55]]
 models = pd.DataFrame(data = network_params, columns = columns,
                       index = ['Domain', 'Phase', 'dm15'])
-
-
-print('Models are Preliminary!!!!!!')
