@@ -19,7 +19,7 @@ Y1 = np.ones((10, 1))
 
 def test_Train_init():
     trainer = Train(X1, Y1, X1, Y1)
-    assert trainer.mcnum == 100
+    assert trainer.mcnum == 75 # default
     assert type(trainer.network) is DropoutCNN
     assert trainer.train_loader.batch_size == 16 # default
     assert trainer.valX.size()[0] == X1.shape[0]

@@ -37,7 +37,7 @@ def test_predict():
     ## just drop the model that breaks it
     dsn.models.drop('dm15', inplace = True)
     ## now it should pass the test
-    results = dsn.predict(DF, mcnum = 2, status = True)
+    results = dsn.predict(DF, mcnum = 1, status = True)
     assert type(results) == pd.DataFrame
     assert results['Domain'].max() <= 1.
     assert results['Domain'].min() >= 0.
