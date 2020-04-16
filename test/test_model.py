@@ -35,7 +35,7 @@ def test_predict():
     ## hacky fix to "code is too big" issue
     ## e.g. https://github.com/pytorch/pytorch/issues/32507
     ## just drop the model that breaks it
-    dsn.models.drop('dm15', inplace = True)
+    dsn.models.drop(['Domain','dm15'], inplace = True)
     ## now it should pass the test
     results = dsn.predict(DF, mcnum = 1, status = True)
     assert type(results) == pd.DataFrame
