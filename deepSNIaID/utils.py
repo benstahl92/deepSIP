@@ -478,7 +478,7 @@ def init_weights(network_component):
             nn.init.normal_(network_component.weight, mean = 0., std = 0.1)
             network_component.bias.data.fill_(0.1)
 
-def stochastic_predict(network, X, mcnum = 100, sigmoid = False, seed = None,
+def stochastic_predict(network, X, mcnum = 75, sigmoid = False, seed = None,
                        scaler = None, status = False):
     '''
     perform mcnum stochastic forward passes, return mean and std np.arrays

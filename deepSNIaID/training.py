@@ -95,7 +95,7 @@ class Train:
 
     def __init__(self, trainX, trainY, valX, valY, testX = None, testY = None,
                  Ylim = [0., 1.],
-                 seed = 100, threshold = 0.5, regression = True, mcnum = 100,
+                 seed = 100, threshold = 0.5, regression = True, mcnum = 75,
                  kernel = 15, filters = 16, fc_size = 32, drop_rate = 0.1,
                  epochs = 75, early_stop = [0.],
                  lr_decay_steps = [45, 60, 70], lr = 1e-3,
@@ -333,7 +333,7 @@ class Sweep:
     def __init__(self, trainX, trainY, valX, valY, entity, project,
                  kernels, filters, fc_sizes,
                  drop_rates, batch_sizes, lrs, weight_decays, seed = 100,
-                 regression = True, mcnum = 100, epochs = 75, early_stop = [0.],
+                 regression = True, mcnum = 75, epochs = 75, early_stop = [0.],
                  Ylim = [0., 1.], sweep_method = 'random',
                  testX = None, testY = None):
 

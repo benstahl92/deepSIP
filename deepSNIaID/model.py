@@ -70,7 +70,7 @@ class deepSNIaID:
                             utils.LinearScaler(*self.models.loc[mod, Ylim])
 
 
-    def predict(self, spectra, threshold = 0.5, mcnum = 100, status = False):
+    def predict(self, spectra, threshold = 0.5, mcnum = 75, status = False):
         '''
         make predictions with trained models
 
