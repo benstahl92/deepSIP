@@ -1,4 +1,4 @@
-# pytest --cov-report term-missing --cov=deepSNIaID test/
+# pytest --cov-report term-missing --cov=deepSIP test/
 
 # imports -- standard
 import numpy as np
@@ -7,9 +7,9 @@ from torch import nn
 import pytest
 
 # imports -- custom
-from deepSNIaID.architecture import DropoutCNN
-from deepSNIaID.architecture import _conv_length, _maxpool_length
-from deepSNIaID.architecture import _conv_block, _fc_block
+from deepSIP.architecture import DropoutCNN
+from deepSIP.architecture import _conv_length, _maxpool_length
+from deepSIP.architecture import _conv_block, _fc_block
 
 def test_conv_length():
     assert _conv_length(100, 1) == 100

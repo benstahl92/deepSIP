@@ -1,11 +1,11 @@
-# pytest --cov-report term-missing --cov=deepSNIaID test/
+# pytest --cov-report term-missing --cov=deepSIP test/
 
 # imports -- standard
 import numpy as np
 import pytest
 
 # imports -- custom
-from deepSNIaID.dataset import NumpyXDataset, NumpyXYDataset
+from deepSIP.dataset import NumpyXDataset, NumpyXYDataset
 
 def test_NumpyXDataset():
     X = np.ones((10, 5)).astype(np.float32)

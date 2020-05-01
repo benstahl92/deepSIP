@@ -7,17 +7,17 @@ import torch
 from torch import nn
 
 # imports -- custom
-from deepSNIaID import utils
-from deepSNIaID.architecture import DropoutCNN
-from deepSNIaID.dataset import NumpyXDataset
-from deepSNIaID.preprocessing import EvaluationSpectra
-from deepSNIaID.trained_models import models, model_path
+from deepSIP import utils
+from deepSIP.architecture import DropoutCNN
+from deepSIP.dataset import NumpyXDataset
+from deepSIP.preprocessing import EvaluationSpectra
+from deepSIP.trained_models import models, model_path
 
-__all__ = ['deepSNIaID']
+__all__ = ['deepSIP']
 
-class deepSNIaID:
+class deepSIP:
     '''
-    class for deploying trained deepSNIaID models
+    class for deploying trained deepSIP models
 
     Parameters
     ----------

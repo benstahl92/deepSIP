@@ -1,4 +1,4 @@
-# pytest --cov-report term-missing --cov=deepSNIaID test/
+# pytest --cov-report term-missing --cov=deepSIP test/
 
 # imports -- standard
 import os
@@ -7,7 +7,7 @@ import pandas as pd
 import pytest
 
 # imports -- custom
-from deepSNIaID.preprocessing import Spectrum, EvaluationSpectra, TVTSpectra
+from deepSIP.preprocessing import Spectrum, EvaluationSpectra, TVTSpectra
 
 # globals for testing
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))

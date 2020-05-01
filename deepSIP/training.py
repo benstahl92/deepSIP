@@ -17,9 +17,9 @@ except ImportError:
     _WANDB = False
 
 # imports -- custom
-from deepSNIaID import utils
-from deepSNIaID.architecture import DropoutCNN
-from deepSNIaID.dataset import NumpyXDataset, NumpyXYDataset
+from deepSIP import utils
+from deepSIP.architecture import DropoutCNN
+from deepSIP.dataset import NumpyXDataset, NumpyXYDataset
 
 __all__ = ['Train', 'Sweep']
 
