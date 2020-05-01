@@ -1,7 +1,7 @@
 # deepSNIaID
 
 [![Build Status](https://travis-ci.org/benstahl92/deepSNIaID.svg?branch=master)](https://travis-ci.org/benstahl92/deepSNIaID)
-[![Documentation Status](https://readthedocs.org/projects/deepsniaid/badge/?version=latest)](https://deepsniaid.readthedocs.io/en/latest/?badge=latest) [![codecov](https://codecov.io/gh/benstahl92/deepSNIaID/branch/master/graph/badge.svg)](https://codecov.io/gh/benstahl92/deepSNIaID) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Python 3.6+](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Documentation Status](https://readthedocs.org/projects/deepsniaid/badge/?version=latest)](https://deepsniaid.readthedocs.io/en/latest/?badge=latest) [![codecov](https://codecov.io/gh/benstahl92/deepSNIaID/branch/master/graph/badge.svg)](https://codecov.io/gh/benstahl92/deepSNIaID) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 deepSNIaID (deep learning for Supernova Ia IDentification) is an open-source toolkit for measuring the phase and light-curve shape (parameterized by SNooPy’s &Delta;*m*<sub>15</sub>) of a Type Ia Supernova (SN Ia) from an optical spectrum. The primary contents of the package are a set of three trained Convolutional Neural Networks (CNNs) for the aforementioned purposes, but tools for preprocessing spectra, modifying the neural architecture, training models, and sweeping through hyperparameters are also included.
 
