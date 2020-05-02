@@ -35,7 +35,7 @@ class deepSIP:
              device type being used (GPU if available, else CPU)
     '''
 
-    def __init__(self, spec_len = 1024, seed = 100, drop_rate = None):
+    def __init__(self, spec_len = 1024, seed = 100, drop_rate = 0.02):
 
         # store needed inputs
         self.seed = seed
@@ -73,7 +73,7 @@ class deepSIP:
                             utils.LinearScaler(*self.models.loc[mod, Ylim])
 
 
-    def predict(self, spectra, threshold = 0.5, mcnum = 75, status = False):
+    def predict(self, spectra, threshold = 0.9, mcnum = 30, status = False):
         '''
         make predictions with trained models
 
