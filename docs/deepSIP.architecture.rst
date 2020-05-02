@@ -1,9 +1,9 @@
-deepSNIaID.utils
+deepSIP.architecture
 ========================
 
 
 
-.. automodule:: deepSNIaID.utils
+.. automodule:: deepSIP.architecture
     :members:
     :undoc-members:
     :show-inheritance:
