@@ -1,9 +1,9 @@
-deepSNIaID.preprocessing
+deepSIP.preprocessing
 ========================
 
 
 
-.. automodule:: deepSNIaID.preprocessing
+.. automodule:: deepSIP.preprocessing
     :members:
     :undoc-members:
     :show-inheritance:

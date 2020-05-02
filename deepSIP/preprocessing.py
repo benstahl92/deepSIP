@@ -17,7 +17,7 @@ except ImportError:
     _SNID = False
 
 # imports -- custom
-from deepSNIaID import utils
+from deepSIP import utils
 
 __all__ = ['Spectrum', 'EvaluationSpectra', 'TVTSpectra']
 

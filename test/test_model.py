@@ -1,4 +1,4 @@
-# pytest --cov-report term-missing --cov=deepSNIaID test/
+# pytest --cov-report term-missing --cov=deepSIP test/
 
 # imports -- standard
 import os
@@ -6,8 +6,8 @@ import pandas as pd
 import pytest
 
 # imports -- custom
-from deepSNIaID import deepSNIaID
-from deepSNIaID import utils
+from deepSIP import deepSIP
+from deepSIP import utils
 
 # globals for testing
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -18,7 +18,7 @@ DF['filename'] = DF['filename'].apply(lambda f: \
                                       'example', 'spectra', f))
 
 def test_init():
-    dsn = deepSNIaID()
+    dsn = deepSIP()
     assert dsn.seed == 100
     assert dsn.models.shape[0] == 3 # 3 models
     for mod in ['Domain', 'Phase', 'dm15']:
@@ -29,7 +29,7 @@ def test_init():
     assert isinstance(dsn.models.loc['dm15', 'Yscaler'], utils.LinearScaler)
 
 def test_predict():
-    dsn = deepSNIaID()
+    dsn = deepSIP()
     with pytest.raises(TypeError):
         results = dsn.predict(5)
     ## "code is too big" issue

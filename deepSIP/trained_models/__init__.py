@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 # imports -- custom
-from deepSNIaID.architecture import DropoutCNN
+from deepSIP.architecture import DropoutCNN
 
 __all__ = ['models', 'model_path']
 

@@ -1,9 +1,9 @@
-deepSNIaID
+deepSIP
 ===================
 
 
 
-.. automodule:: deepSNIaID.model
+.. automodule:: deepSIP.model
     :members:
     :undoc-members:
     :show-inheritance:

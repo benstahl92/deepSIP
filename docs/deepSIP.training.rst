@@ -1,9 +1,9 @@
-deepSNIaID.training
+deepSIP.training
 ========================
 
 
 
-.. automodule:: deepSNIaID.training
+.. automodule:: deepSIP.training
     :members:
     :undoc-members:
     :show-inheritance:

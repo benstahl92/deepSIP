@@ -1,4 +1,4 @@
-# pytest --cov-report term-missing --cov=deepSNIaID test/
+# pytest --cov-report term-missing --cov=deepSIP test/
 
 # imports -- standard
 import numpy as np
@@ -9,9 +9,9 @@ from torch import nn
 import pytest
 
 # imports -- custom
-from deepSNIaID import utils
-from deepSNIaID.training import Train, Sweep
-from deepSNIaID.architecture import DropoutCNN
+from deepSIP import utils
+from deepSIP.training import Train, Sweep
+from deepSIP.architecture import DropoutCNN
 
 # globals for testing
 X1 = np.ones((10, 1, 100))

@@ -1,4 +1,4 @@
-# pytest --cov-report term-missing --cov=deepSNIaID test/
+# pytest --cov-report term-missing --cov=deepSIP test/
 
 # imports -- standard
 import os
@@ -7,9 +7,9 @@ import torch
 import pytest
 
 # imports -- custom
-from deepSNIaID import utils
-from deepSNIaID.utils import _log_bin_loop, _log_bin_vec
-from deepSNIaID.architecture import _fc_block, DropoutCNN
+from deepSIP import utils
+from deepSIP.utils import _log_bin_loop, _log_bin_vec
+from deepSIP.architecture import _fc_block, DropoutCNN
 
 # globals for testing
 TEST_DIR = os.path.dirname(os.path.abspath(__file__))

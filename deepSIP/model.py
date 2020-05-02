@@ -7,17 +7,17 @@ import torch
 from torch import nn
 
 # imports -- custom
-from deepSNIaID import utils
-from deepSNIaID.architecture import DropoutCNN
-from deepSNIaID.dataset import NumpyXDataset
-from deepSNIaID.preprocessing import EvaluationSpectra
-from deepSNIaID.trained_models import models, model_path
+from deepSIP import utils
+from deepSIP.architecture import DropoutCNN
+from deepSIP.dataset import NumpyXDataset
+from deepSIP.preprocessing import EvaluationSpectra
+from deepSIP.trained_models import models, model_path
 
-__all__ = ['deepSNIaID']
+__all__ = ['deepSIP']
 
-class deepSNIaID:
+class deepSIP:
     '''
-    class for deploying trained deepSNIaID models
+    class for deploying trained deepSIP models
 
     Parameters
     ----------
@@ -35,7 +35,7 @@ class deepSNIaID:
              device type being used (GPU if available, else CPU)
     '''
 
-    def __init__(self, spec_len = 1024, seed = 100):
+    def __init__(self, spec_len = 1024, seed = 100, drop_rate = None):
 
         # store needed inputs
         self.seed = seed
@@ -54,7 +54,10 @@ class deepSNIaID:
         self.models = models.copy()
         Ylim = ['Ymin', 'Ymax']
         for mod, params in self.models.drop(Ylim, axis = 1).iterrows():
-            net = DropoutCNN(spec_len, **params.to_dict())
+            pars = params.to_dict()
+            if drop_rate is not None:
+                pars['drop_rate'] = drop_rate
+            net = DropoutCNN(spec_len, **pars)
             if GPU:
                 net = nn.DataParallel(net).to(self.device)
             else:
@@ -135,5 +138,4 @@ class deepSNIaID:
                     predictions['e_' + mod] = sigma[:, 0]
             if status:
                 print('done in {:.3f} s'.format(time() - t1))
-
         return pd.DataFrame(predictions)

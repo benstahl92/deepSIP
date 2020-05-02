@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'deepSNIaID'
+project = 'deepSIP'
 copyright = '2020, Benjamin Stahl'
 author = 'Benjamin Stahl'
 

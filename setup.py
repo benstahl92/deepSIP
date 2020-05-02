@@ -3,13 +3,13 @@ import ast
 from setuptools import setup, find_packages
 
 # Get version without importing module
-with open('deepSNIaID/__init__.py') as f:
+with open('deepSIP/__init__.py') as f:
     mod = ast.parse(f.read())
 
-setup(name='deepSNIaID',
+setup(name='deepSIP',
       version=mod.body[-1].value.s,
-      description='Deep Learning for Supernova Ia IDentification',
-      url='https://github.com/benstahl92/deepSNIaID',
+      description='Deep Learning of Supernova Ia Parameters',
+      url='https://github.com/benstahl92/deepSIP',
       author='Benjamin Stahl',
       author_email='benjamin_stahl@berkeley.edu',
       license='GPL-v3',
