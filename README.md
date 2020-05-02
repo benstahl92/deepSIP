@@ -20,7 +20,7 @@ cd deepSIP
 
 ```bash
 python -m venv dsenv # create virtual environment (one time only)
-source dsenv/bin/active # each time you need to activate the environment
+source dsenv/bin/activate # each time you need to activate the environment
 deactivate # if/when you need to leave the environment
 ```
 
