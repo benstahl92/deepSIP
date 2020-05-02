@@ -1,6 +1,6 @@
 # deepSIP
 
-[![Build Status](https://travis-ci.org/benstahl92/deepSIP.svg?branch=master)](https://travis-ci.org/benstahl92/deepSIP) [![Documentation Status](https://readthedocs.org/projects/deepsniaid/badge/?version=latest)](https://deepsniaid.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://travis-ci.org/benstahl92/deepSIP.svg?branch=master)](https://travis-ci.org/benstahl92/deepSIP) [![Documentation Status](https://readthedocs.org/projects/deepSIP/badge/?version=latest)](https://deepSIP.readthedocs.io/en/latest/?badge=latest)
  [![codecov](https://codecov.io/gh/benstahl92/deepSIP/branch/master/graph/badge.svg)](https://codecov.io/gh/benstahl92/deepSIP) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 deepSIP (deep learning of Supernova Ia Parameters) is an open-source toolkit for measuring the phase and light-curve shape (parameterized by SNooPy’s &Delta;*m*<sub>15</sub>) of a Type Ia Supernova (SN Ia) from an optical spectrum. The primary contents of the package are a set of three trained Convolutional Neural Networks (CNNs) for the aforementioned purposes, but tools for preprocessing spectra, modifying the neural architecture, training models, and sweeping through hyperparameters are also included.
@@ -40,7 +40,7 @@ ds = deepSIP()
 predictions = ds.predict(spectra, threshold = 0.5, status = True)
 ```
 
-Full documentation is available on [readthedocs](https://deepSNIaID.readthedocs.io/en/latest/?badge=latest#).
+Full documentation is available on [readthedocs](https://deepSIP.readthedocs.io/en/latest/?badge=latest#).
 
 ## Contributing
 

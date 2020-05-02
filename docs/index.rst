@@ -26,8 +26,8 @@ First, you'll need to clone deepSIP and enter its directory.
 
 .. code-block:: bash
 
-   python -m venv dsnenv # create virtual environment (one time only)
-   source dsnenv/bin/active # each time you need to activate the environment
+   python -m venv dsenv # create virtual environment (one time only)
+   source dsenv/bin/active # each time you need to activate the environment
    deactivate # if/when you need to leave the environment
 
 Install dependencies and deepSIP.
@@ -43,9 +43,9 @@ Standard Usage
 .. code-block:: python
 
    from deepSIP import deepSIP
-   dsn = deepSIP()
+   ds = deepSIP()
    # spectra is a pd.DataFrame with columns including ['SN', 'filename', 'z']
-   predictions = dsn.predict(spectra, threshold = 0.5, status = True)
+   predictions = ds.predict(spectra, threshold = 0.5, status = True)
 
 Placeholder for example section on GitHub
 
