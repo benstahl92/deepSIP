@@ -10,7 +10,7 @@ deepSIP (deep learning of Supernova Ia Parameters) is an open-source toolkit for
 
 The entire code base is available on GitHub: https://github.com/benstahl92/deepSIP
 
-If you use deepSIP in your research, please cite the following paper:
+If you use deepSIP in your research, please cite the following paper: https://ui.adsabs.harvard.edu/abs/2020MNRAS.496.3553S/abstract
 
 Installation
 ^^^^^^^^^^^^
