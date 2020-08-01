@@ -5,7 +5,7 @@
 
 deepSIP (deep learning of Supernova Ia Parameters) is an open-source toolkit for measuring the phase and light-curve shape (parameterized by SNooPy’s &Delta;*m*<sub>15</sub>) of a Type Ia Supernova (SN Ia) from an optical spectrum. The primary contents of the package are a set of three trained Convolutional Neural Networks (CNNs) for the aforementioned purposes, but tools for preprocessing spectra, modifying the neural architecture, training models, and sweeping through hyperparameters are also included.
 
-If you use deepSIP in your research, please cite the following paper:
+If you use deepSIP in your research, please cite the following paper: [Stahl et al. (2020)](https://ui.adsabs.harvard.edu/abs/2020MNRAS.496.3553S/abstract)
 
 ## Installation
 
